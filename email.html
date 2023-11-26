@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication Email</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-image: linear-gradient(to left, #BDBBBE 0%, #9D9EA3 100%), radial-gradient(88% 271%, rgba(255, 255, 255, 0.25) 0%, rgba(254, 254, 254, 0.25) 1%, rgba(0, 0, 0, 0.25) 100%), radial-gradient(50% 100%, rgba(255, 255, 255, 0.30) 0%, rgba(0, 0, 0, 0.30) 100%);
+            background-blend-mode: normal, lighten, soft-light;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+
+        #otpDisplay {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        #resendLink {
+            color: #007bff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        img {
+            width: 10%;
+            height: auto;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="C:\Users\mrabe\OneDrive\Desktop\Cinema Stack\cinemaStack-logo.png">
+        <h2>Authentication Email</h2>
+        <p>An OTP has been sent to your email address.</p>
+        <div id="otpDisplay"></div>
+        <p>Didn't receive the code? <a id="resendLink">Resend OTP</a></p>
+
+        <script>
+            function generateOTP() {
+                // Generate a 6-digit random OTP
+                return Math.floor(100000 + Math.random() * 900000);
+            }
+
+            function displayOTP() {
+                // Display the OTP on the page
+                const otpDisplay = document.getElementById('otpDisplay');
+                const otp = generateOTP();
+                otpDisplay.textContent = `Your OTP: ${otp}`;
+            }
+
+            // Initial OTP display
+            displayOTP();
+
+            // Resend OTP event
+            document.getElementById('resendLink').addEventListener('click', function () {
+                // You can implement email sending logic here (server-side)
+                // For this example, we'll just redisplay the OTP
+                displayOTP();
+            });
+        </script>
+    </div>
+</body>
+</html>
